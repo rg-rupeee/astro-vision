@@ -22,7 +22,10 @@ AstroVision is a Node.js and TypeScript-based backend service that provides auth
 3. **Node Version**
    - Requires **Node.js v20.x** and **npm**.
 
-4. **Environment Variables**
+4. **MongoDB**
+   - Requires **MongoDB** to be installed and running locally or accessible via network.
+
+5. **Environment Variables**
    - Copy `.env.example` to `.env.local` and update values as needed:
      ```bash
      cp .env.example .env.local
@@ -69,6 +72,18 @@ astro-vision/
 ---
 
 ## Design Decisions
+
+---
+
+## Why MongoDB?
+
+MongoDB was chosen because the application's data is new and does not have a fixed structure, making a flexible NoSQL database ideal for rapid development and iteration. As the application scales, multiple services will be introduced:
+- The **user service** can use a SQL-based database like PostgreSQL, which is well-suited for structured, relational data.
+- The **horoscoper service** will continue to use MongoDB, as horoscope data is highly dynamic and benefits from MongoDB's schema-less design.
+
+This hybrid approach allows each service to use the most appropriate database technology for its data model and scalability needs.
+
+---
 
 - **TypeScript** for type safety and maintainability.
 - **Express.js** for robust API routing.
