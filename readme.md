@@ -80,9 +80,19 @@ astro-vision/
 
 ---
 
+## Rate Limiting
+
+- The API enforces a rate limit of **5 requests per minute per IP** using [express-rate-limit](https://www.npmjs.com/package/express-rate-limit).
+- If the limit is exceeded, the API responds with HTTP 429 and a message:  
+  `Too many requests, please try again after a minute.`
+- Configuration is located in [`src/app.ts`](src/app.ts).
+
+---
+
 ## Improvements To Make With Time
 
 - Add rate limiting and request throttling.
+- Add request throttling.
 - Implement role-based access control.
 - Add more comprehensive logging and monitoring.
 - Improve test coverage and add CI/CD pipelines.

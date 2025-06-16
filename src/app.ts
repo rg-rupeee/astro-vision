@@ -11,6 +11,7 @@ import compression from 'compression';
 import mongoSanitize from 'express-mongo-sanitize';
 import express, { Request, Response } from 'express';
 import { Server as SocketIOServer, Socket } from 'socket.io';
+import rateLimit from 'express-rate-limit';
 
 import BASE_CONFIG from '@config/environment';
 import logger, { stream } from '@util/logger';
@@ -75,6 +76,21 @@ class App {
   }
 
   private initializeMiddlewares() {
+    // Rate limiting: Prevent more than 5 API calls per minute per IP
+    this.app.use(
+      rateLimit({
+        windowMs: 60 * 1000, // 1 minute
+        max: 5,
+        standardHeaders: true,
+        legacyHeaders: false,
+        message: {
+          success: false,
+          status: 'fail',
+          message: 'Too many requests, please try again after a minute.',
+        },
+      }),
+    );
+
     // Helmet helps secure Express apps by setting various HTTP headers
     this.app.use(helmet());
 
