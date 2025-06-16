@@ -6,14 +6,20 @@ const userSchema = new Schema<IUser>(
     name: {
       type: String,
       required: true,
-      index: true,
     },
     email: {
       type: String,
-      required: false,
+      required: true,
       unique: true,
-      sparse: true,
       index: true,
+    },
+    birthdate: {
+      type: Date,
+      required: true,
+    },
+    zodiac: {
+      type: String,
+      required: true,
     },
   },
   {

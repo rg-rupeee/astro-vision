@@ -1,7 +1,8 @@
 import { Document, Types } from 'mongoose';
 
-export interface IUser extends Document {
-  _id: Types.ObjectId;
+export interface IUser extends Document<Types.ObjectId> {
   name: string;
-  email?: string;
+  email: string;
+  birthdate: Date;
+  zodiac: string;
 }

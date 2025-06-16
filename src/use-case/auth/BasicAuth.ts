@@ -15,7 +15,13 @@ class BasicAuth extends Auth {
     super(identityRepository, userRepository);
   }
 
-  async signup(data: { email: string; password: string; name: string }) {
+  async signup(data: {
+    email: string;
+    password: string;
+    name: string;
+    birthdate: Date;
+    zodiac: string;
+  }) {
     // Check if email already exists
     const existingUser = await this.userRepository.findOne({
       email: data.email,

@@ -24,18 +24,24 @@ abstract class Auth {
     name,
     email,
     password,
+    birthdate,
+    zodiac,
   }: {
     name: string;
-    email?: string;
-    password?: string;
+    email: string;
+    password: string;
+    birthdate: Date;
+    zodiac: string;
   }): Promise<IUser> {
     // Create user
     const user = await this.userRepository.create({
       name,
-      ...(email && { email }),
+      email,
+      birthdate,
+      zodiac,
     });
 
-    // Create identity with or without password
+    // Create identity
     const identityData: any = {
       user: new Types.ObjectId(user._id.toString()),
     };
@@ -187,33 +193,6 @@ abstract class Auth {
       { user: new Types.ObjectId(userId.toString()) },
       { $set: { assignedTokens: [] } },
     );
-  }
-
-  protected async createGuestUser({
-    name,
-  }: {
-    name: string;
-  }): Promise<{ user: IUser; token: string }> {
-    // Check if username already exists
-    const existingUser = await this.userRepository.findByName(name);
-
-    if (existingUser) {
-      throw new AppError(ERRORS.USER_ALREADY_EXISTS, STATUS_CODES.BAD_REQUEST);
-    }
-
-    // Create user without password
-    const user = await this.createUser({ name });
-
-    // Generate token
-    const { token } = await this.generateToken({
-      userId: user._id.toString(),
-      identifier: `guest_${name}`,
-    });
-
-    return {
-      user,
-      token,
-    };
   }
 
   abstract login(data: {

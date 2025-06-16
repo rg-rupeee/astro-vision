@@ -5,6 +5,21 @@ export const SignupSchema = z
     name: z.string().min(2),
     email: z.string().email(),
     password: z.string().min(4),
+    birthdate: z
+      .string()
+      .refine(
+        val => {
+          const date = new Date(val);
+          return !isNaN(date.getTime());
+        },
+        {
+          message: 'Invalid date format',
+        },
+      )
+      .transform(val => new Date(val))
+      .refine(date => date <= new Date(), {
+        message: 'Date of birth cannot be in the future',
+      }),
   })
   .strict();
 
@@ -15,22 +30,6 @@ export const LoginSchema = z
   })
   .strict();
 
-export const GuestRegisterSchema = z
-  .object({
-    name: z.string().min(2),
-  })
-  .strict();
-
-export const UsernameCheckSchema = z
-  .object({
-    name: z.string().min(2),
-  })
-  .strict();
-
 export type SignupDTO = z.infer<typeof SignupSchema>;
 
 export type LoginDTO = z.infer<typeof LoginSchema>;
-
-export type GuestRegisterDTO = z.infer<typeof GuestRegisterSchema>;
-
-export type UsernameCheckDTO = z.infer<typeof UsernameCheckSchema>;

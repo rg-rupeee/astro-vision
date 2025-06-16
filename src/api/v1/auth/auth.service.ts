@@ -1,27 +1,20 @@
 import { Inject, Service } from 'typedi';
 
 import BasicAuth from '../../../use-case/auth/BasicAuth';
-import GuestAuth from '../../../use-case/auth/GuestAuth';
-import {
-  GuestRegisterDTO,
-  LoginDTO,
-  SignupDTO,
-  UsernameCheckDTO,
-} from './auth.schema';
+import { LoginDTO, SignupDTO } from './auth.schema';
 
 @Service()
 export class AuthService {
-  constructor(
-    @Inject() private basicAuth: BasicAuth,
-    @Inject() private guestAuth: GuestAuth,
-  ) {}
+  constructor(@Inject() private basicAuth: BasicAuth) {}
 
-  async signup({ email, name, password }: SignupDTO) {
+  async signup({ email, name, password, birthdate }: SignupDTO) {
     // signup user
     const { user, token } = await this.basicAuth.signup({
       name,
       email,
       password,
+      birthdate,
+      zodiac: 'asdf',
     });
 
     // TODO: send verification email and welcome email
@@ -42,18 +35,5 @@ export class AuthService {
       user,
       token,
     };
-  }
-
-  async guestRegister({ name }: GuestRegisterDTO) {
-    const { user, token } = await this.guestAuth.register({ name });
-
-    return {
-      user,
-      token,
-    };
-  }
-
-  async checkUsernameAvailability({ name }: UsernameCheckDTO) {
-    return await this.guestAuth.checkUsernameAvailability(name);
   }
 }

@@ -21,9 +21,12 @@ export class UserRepository extends MongoRepository<IUser> {
     return await this.model.findById(id).select('-password');
   }
 
-  async create(
-    userData: Pick<IUser, 'name'> & Partial<Pick<IUser, 'email'>>,
-  ): Promise<IUser> {
+  async create(userData: {
+    name: string;
+    email: string;
+    birthdate: Date;
+    zodiac: string;
+  }): Promise<IUser> {
     return super.create(userData);
   }
 }
