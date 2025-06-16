@@ -1,4 +1,4 @@
-import { HoroscopePrediction } from '@interface/HoroscopePrediction';
+import { HoroscopePrediction } from '@interface/horoscopePrediction';
 
 const colors = [
   'Red',
@@ -73,6 +73,9 @@ const messages = [
   'Something beautiful is on the horizon.',
 ];
 
+import { Service } from 'typedi';
+
+@Service()
 export class GenerateHoroscopeUseCase {
   execute(): HoroscopePrediction {
     return {
