@@ -2,7 +2,7 @@ import { Inject, Service } from 'typedi';
 
 import BasicAuth from '../../../use-case/auth/BasicAuth';
 import { LoginDTO, SignupDTO } from './auth.schema';
-import Zodiac from 'use-case/zodiac/Zodiac';
+import Zodiac from 'use-case/horoscope/Zodiac';
 
 @Service()
 export class AuthService {
