@@ -10,6 +10,22 @@ export const ERRORS: ErrorMap = {
     errorCode: 'E00000',
     message: 'Something Went Wrong!',
   },
+  VALIDATION_ERROR: {
+    errorCode: 'E00100',
+    message: 'Validation failed',
+  },
+  CAST_ERROR: {
+    errorCode: 'E00101',
+    message: 'Invalid value for field',
+  },
+  DUPLICATE_KEY_ERROR: {
+    errorCode: 'E00102',
+    message: 'Duplicate key error',
+  },
+  JSON_STRINGIFY_ERROR: {
+    errorCode: 'E00103',
+    message: 'JSON stringify error',
+  },
   INVALID_TOKEN: {
     errorCode: 'E00001',
     message: 'Invalid token',
