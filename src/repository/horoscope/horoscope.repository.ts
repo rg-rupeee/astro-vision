@@ -31,16 +31,17 @@ export class UserHoroscopeRepository extends MongoRepository<IUserHoroscope> {
     days: number = 7,
   ): Promise<IUserHoroscope[]> {
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    today.setHours(23, 59, 59, 999); // End of today instead of start
 
-    const pastDate = new Date(today);
+    const pastDate = new Date();
     pastDate.setDate(pastDate.getDate() - days);
+    pastDate.setHours(0, 0, 0, 0); // Start of the past date
 
     return UserHoroscopeModel.find({
       userId: new Types.ObjectId(userId),
       generatedAt: {
         $gte: pastDate,
-        $lt: today,
+        $lte: today,
       },
       isActive: true,
     }).sort({ generatedAt: -1 });

@@ -21,7 +21,7 @@ export class HoroscopeService {
     try {
       logger.info(`Fetching today's horoscope for user ${userId}`);
 
-      // Fetch user's zodiac sign
+      // Fetch user details
       const user = await this.userRepository.findById(userId);
 
       if (!user) {

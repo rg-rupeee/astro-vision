@@ -2,12 +2,13 @@ import { Response } from 'express';
 import { Service } from 'typedi';
 import { HoroscopeService } from './horoscope.service';
 import { AuthRequest } from '@interface/auth';
+import catchAsync from '@middleware/catchAsync';
 
 @Service()
 export class HoroscopeController {
   constructor(private horoscopeService: HoroscopeService) {}
 
-  async getToday(req: AuthRequest, res: Response) {
+  public getToday = catchAsync(async (req: AuthRequest, res: Response) => {
     const user = req.user;
 
     const horoscope = await this.horoscopeService.getTodayHoroscope(
@@ -22,9 +23,9 @@ export class HoroscopeController {
         prediction: horoscope.prediction,
       },
     });
-  }
+  });
 
-  async getHistory(req: AuthRequest, res: Response) {
+  public getHistory = catchAsync(async (req: AuthRequest, res: Response) => {
     const user = req.user;
     const { days = 7 } = req.query as { days?: string };
 
@@ -43,5 +44,5 @@ export class HoroscopeController {
         })),
       },
     });
-  }
+  });
 }
