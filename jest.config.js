@@ -19,5 +19,6 @@ module.exports = {
     '^@api/(.*)$': '<rootDir>/src/api/$1',
     '^@constant/(.*)$': '<rootDir>/src/constant/$1',
     '^@repository/(.*)$': '<rootDir>/src/repository/$1',
+    '^use-case/(.*)$': '<rootDir>/src/use-case/$1',
   },
 };

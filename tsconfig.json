@@ -36,7 +36,8 @@
       "@database/*": ["database/*"],
       "@api/*": ["api/*"],
       "@constant/*": ["constant/*"],
-      "@repository/*": ["repository/*"]
+      "@repository/*": ["repository/*"],
+      "use-case/*": ["use-case/*"]
     }
   },
   "include": ["src/**/*"]
