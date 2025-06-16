@@ -1,9 +1,6 @@
 import { Response } from 'express';
 import { Service } from 'typedi';
 import { HoroscopeService } from './horoscope.service';
-import AppError from '../../../util/error/AppError';
-import ERRORS from '../../../constant/errorTypes';
-import STATUS_CODES from '../../../constant/statusCodes';
 import { AuthRequest } from '@interface/auth';
 
 @Service()
