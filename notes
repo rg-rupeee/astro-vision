@@ -1,0 +1,7 @@
+
+For proper imports
+Ensure that Visual Studio Code is using the correct TypeScript version and configuration. You can add the following settings to your settings.json:
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

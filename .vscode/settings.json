@@ -1,0 +1,11 @@
+{
+  "cSpell.words": [
+    "typedi",
+    "typeorm"
+  ],
+  "yaml.schemas": {
+    "swaggerviewer:openapi": "file:///r%3A/Just%20CS%20Things/projects/utility-service/src/docs/html-pdf.yaml"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
