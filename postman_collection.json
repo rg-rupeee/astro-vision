@@ -1,16 +1,154 @@
 {
-  "info": {
-    "name": "AstroVision",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-
-  ],
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:3000",
-      "type": "string"
-    }
-  ]
+  "collection": {
+    "info": {
+      "_postman_id": "d694129d-e053-44d2-99b5-0c35cc0e84cb",
+      "name": "AstroVision",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "updatedAt": "2025-06-16T18:08:59.000Z",
+      "createdAt": "2025-06-16T15:49:20.000Z",
+      "lastUpdatedBy": "21893420",
+      "uid": "21893420-d694129d-e053-44d2-99b5-0c35cc0e84cb"
+    },
+    "item": [
+      {
+        "name": "auth",
+        "item": [
+          {
+            "name": "signup",
+            "id": "25461311-083e-442b-9e18-5a47e4fe6823",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"name\": \"Rupesh Garhwal\",\n    \"email\": \"rupesh.garhwal@test.com\",\n    \"password\": \"pass@123\",\n    \"birthdate\": \"2000/03/09\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "localhost:3000/api/v1/auth/signup",
+                "host": ["localhost"],
+                "port": "3000",
+                "path": ["api", "v1", "auth", "signup"]
+              }
+            },
+            "response": [],
+            "uid": "21893420-25461311-083e-442b-9e18-5a47e4fe6823"
+          },
+          {
+            "name": "login",
+            "id": "4172deb5-eb1a-497a-a201-fc86f45e92ed",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"email\": \"rupesh.garhwal@test.com\",\n    \"password\": \"pass@123\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "localhost:3000/api/v1/auth/login",
+                "host": ["localhost"],
+                "port": "3000",
+                "path": ["api", "v1", "auth", "login"]
+              }
+            },
+            "response": [],
+            "uid": "21893420-4172deb5-eb1a-497a-a201-fc86f45e92ed"
+          }
+        ],
+        "id": "13775b0b-2463-4e19-85d3-d28cbf660999",
+        "uid": "21893420-13775b0b-2463-4e19-85d3-d28cbf660999"
+      },
+      {
+        "name": "horoscope",
+        "item": [
+          {
+            "name": "get today horoscope",
+            "id": "ee1f7858-0017-4822-bb0d-e3f427a9a416",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUwNTg1ZDk0N2M0ZTEyZDg4YTNhYzUiLCJpZGVudGlmaWVyIjoicnVwZXNoLmdhcmh3YWxAdGVzdC5jb20iLCJ0b2tlbklkIjoiMTc1MDA5NTk3NTE0OCIsImlhdCI6MTc1MDA5NTk3NSwiZXhwIjoxNzUwMTgyMzc1fQ.FRMRQLdTQNTAqETYy3Lt5t7-2qrRfwPGPkNwvOO7FBg",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "localhost:3000/api/v1/horoscope/today",
+                "host": ["localhost"],
+                "port": "3000",
+                "path": ["api", "v1", "horoscope", "today"]
+              }
+            },
+            "response": [],
+            "uid": "21893420-ee1f7858-0017-4822-bb0d-e3f427a9a416"
+          },
+          {
+            "name": "get horoscope history",
+            "id": "e2fb1dad-02b2-45c1-a0d6-f81fef937f95",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "auth": {
+                "type": "bearer",
+                "bearer": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODUwNTg1ZDk0N2M0ZTEyZDg4YTNhYzUiLCJpZGVudGlmaWVyIjoicnVwZXNoLmdhcmh3YWxAdGVzdC5jb20iLCJ0b2tlbklkIjoiMTc1MDA5NTk3NTE0OCIsImlhdCI6MTc1MDA5NTk3NSwiZXhwIjoxNzUwMTgyMzc1fQ.FRMRQLdTQNTAqETYy3Lt5t7-2qrRfwPGPkNwvOO7FBg",
+                    "type": "string"
+                  }
+                ]
+              },
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "localhost:3000/api/v1/horoscope/history?days=7",
+                "host": ["localhost"],
+                "port": "3000",
+                "path": ["api", "v1", "horoscope", "history"],
+                "query": [
+                  {
+                    "key": "days",
+                    "value": "7"
+                  }
+                ]
+              }
+            },
+            "response": [],
+            "uid": "21893420-e2fb1dad-02b2-45c1-a0d6-f81fef937f95"
+          }
+        ],
+        "id": "ff7c4dbc-9c0d-464e-84cd-c1f4735b6fa5",
+        "uid": "21893420-ff7c4dbc-9c0d-464e-84cd-c1f4735b6fa5"
+      }
+    ]
+  }
 }
