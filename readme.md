@@ -92,6 +92,7 @@ This hybrid approach allows each service to use the most appropriate database te
 - **Swagger/OpenAPI** documentation for easy API exploration.
 - **Environment-based configuration** for flexibility across environments.
 - **Testing**: Includes both unit and E2E tests.
+- **ESLint**: For maintaining consistency across the project and strict coding rules
 
 ---
 
@@ -106,13 +107,12 @@ This hybrid approach allows each service to use the most appropriate database te
 
 ## Improvements To Make With Time
 
-- Add rate limiting and request throttling.
-- Add request throttling.
 - Implement role-based access control.
 - Add more comprehensive logging and monitoring.
 - Improve test coverage and add CI/CD pipelines.
 - Add support for more horoscope types and user preferences.
 - Enhance error handling and validation.
+- Integrate AI model for generating horoscope
 - Containerize with Docker Compose for multi-service deployments.
 
 ---
