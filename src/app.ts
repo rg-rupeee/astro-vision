@@ -76,8 +76,9 @@ class App {
   }
 
   private initializeMiddlewares() {
-    // Rate limiting: Prevent more than 5 API calls per minute per IP
+    // Rate limiting for APIs: Prevent more than 5 API calls per minute per IP
     this.app.use(
+      '/api',
       rateLimit({
         windowMs: 60 * 1000, // 1 minute
         max: 5,
